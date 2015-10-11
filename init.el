@@ -4,13 +4,6 @@
 (set-frame-font "Hack-18" nil t)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("30b7087fdd149a523aa614568dc6bacfab884145f4a67d64c80d6011d4c90837" "8453c6ba2504874309bdfcda0a69236814cefb860a528eb978b5489422cb1791" "d63e365e57d777c32290dbc672b410f32a112eb5d4b398015cfe822f9a8c07fd" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  ;; Start in fullscreen mode
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
@@ -184,7 +177,7 @@
 
 ;; Smoother scrolling
 (setq mouse-wheel-scroll-amount '(2 ((shift) . 2))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling    
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 ;; Put temporary and backup files elsewhere
@@ -215,10 +208,3 @@ by using nxml's indentation rules."
         (backward-char) (insert "\n"))
       (indent-region begin end))
     (message "Ah, much better!"))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
