@@ -43,11 +43,11 @@
        (key3 "#169de0")
        (builtin "#00b2ff")
        (keyword "#00b2ff")
-       (const   "#fc6fe1")
+       (const "#ffffff")
        (comment "#606060")
        (func    "#a166ff")
        (str     "#29d424")
-       (type    "#f1dbff")
+       (type    "#fce8fc")
        (var     "#ffc4ff")
        (warning "#fa4178"))
    (custom-theme-set-faces
