@@ -2,13 +2,6 @@
 (tool-bar-mode -1)
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("5955105caeda7430a815c2ca4811a7f7718e3dc27dc3ddf4586c27e4162df7b5" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" default)))
  '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
@@ -31,7 +24,6 @@
 (setq package-list
   '(ace-jump-mode
     color-theme
-    color-theme-solarized
     ensime
     expand-region
     find-file-in-repository
@@ -40,7 +32,6 @@
     markdown-mode
     neotree
     powerline
-    ;;rainbow-delimiters
     slime
     theme-looper
     tidy
@@ -119,10 +110,6 @@
 (require 'window-numbering)
 (window-numbering-mode 1)
 
-;;(require 'rainbow-delimiters)
-;;(add-hook 'scala-mode-hook #'rainbow-delimiters-mode)
-;;(add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode)
-
 ;; Exit emacs w/o prompts
 (require 'cl)
 (defadvice save-buffers-kill-emacs
@@ -150,31 +137,30 @@
 
 (setq server-socket-dir "~/.emacs.d/server")
 
-;; Color theme stuff...
-(require 'color-theme)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'Hepatica t)
-
 ;; Scala support
 (require 'ensime)
 (setq ensime-sem-high-faces '(
   (var . (:foreground "#FCE3E5"))
-  (val . (:italic :foreground "#FF75E2"))
+  (val . (:slant italic :foreground "#FF75E2"))
   (varField . (:foreground "#FCE3E5"))
   (valField . (:foreground "#FF75E2"))
-  (functionCall . (:bold :foreground "#A166FF"))
+  (functionCall . (:weight bold :foreground "#A166FF"))
   (operator . (:foreground "#FFFF00"))
   (param . (:foreground "##EFF3FF"))
   (class . (:foreground "#FFFFFF"))
-  (trait . (:italic :foreground "#FFFFFF"))
-  (object . (:bold :foreground "#FFFFFF"))
+  (trait . (:slant italic :foreground "#FFFFFF"))
+  (object . (:weight bold :foreground "#FFFFFF"))
   (package . (:foreground "#FFFFFF"))
   (deprecated . (:strike-through "dark gray"))
   ;;(implicitConversion . (:underline (:style wave :color "blue"))
   ;;(implicitParams . (:underline (:style wave :color "blue"))
 ))
-
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;; Color theme stuff...
+(require 'color-theme)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'Hepatica t)
 
 ;; Navigate to Test implementation
 (defun jump-to-test ()
@@ -197,12 +183,6 @@
 (define-key global-map (kbd "<backtab>") 'scala-indent:indent-with-reluctant-strategy)
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; whitespace settings
-(require 'whitespace)
-(setq whitespace-line-column 140)
-(setq whitespace-style '(face lines-tail))
-(global-whitespace-mode +1)
-
 ;; Turn on yafolding-mode for scala files
 (add-hook 'prog-mode-hook
   (lambda () (yafolding-mode)))
@@ -212,10 +192,10 @@
 ;; Pretty print XML
 (defun bf-pretty-print-xml-region (begin end)
   "Pretty format XML markup in region. You need to have nxml-mode
-http://www.emacswiki.org/cgi-bin/wiki/NxmlMode installed to do
-this.  The function inserts linebreaks to separate tags that have
-nothing but whitespace between them.  It then indents the markup
-by using nxml's indentation rules."
+  http://www.emacswiki.org/cgi-bin/wiki/NxmlMode installed to do
+  this.  The function inserts linebreaks to separate tags that have
+  nothing but whitespace between them.  It then indents the markup
+  by using nxml's indentation rules."
   (interactive "r")
   (save-excursion
       (nxml-mode)
@@ -224,9 +204,3 @@ by using nxml's indentation rules."
         (backward-char) (insert "\n"))
       (indent-region begin end))
     (message "Ah, much better!"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
