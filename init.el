@@ -125,11 +125,12 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 ;; Put temporary and backup files elsewhere
-(setq auto-save-file-name-transforms
-  `((".*" ,(concat user-emacs-directory "auto-save/") t)))
-(setq backup-directory-alist
-  `(("." . ,(expand-file-name
-     (concat user-emacs-directory "backups")))))
+;;(setq auto-save-file-name-transforms
+;;  `((".*" ,(concat user-emacs-directory "auto-save/") t)))
+;;(setq backup-directory-alist
+;;  `(("." . ,(expand-file-name
+;;     (concat user-emacs-directory "backups")))))
+(setq auto-save-default nil)
 (setq create-lockfiles nil)
 
 (setq show-paren-delay 0)
